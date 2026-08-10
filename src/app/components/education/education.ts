@@ -81,16 +81,28 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
 export class EducationComponent {
   educationList = [
     {
-      degree: 'Master of Science in Computer Science',
-      institution: 'Tech University',
-      period: '2020 - 2022',
-      description: 'Specialized in Distributed Systems and Artificial Intelligence. Graduated with Honors.'
+      degree: 'MERN Stack Development (6-Month Training)',
+      institution: 'The Stepping Stone Institute, Indore',
+      period: '2025',
+      description: 'Intensive hands-on professional course focused on building full-stack web applications using MongoDB, Express.js, React.js, and Node.js.'
     },
     {
-      degree: 'Bachelor of Technology in Information Technology',
-      institution: 'State Engineering College',
-      period: '2016 - 2020',
-      description: 'Foundational coursework in Data Structures, Algorithms, Web Technologies, and Database Management.'
+      degree: 'Bachelor of Computer Applications (BCA)',
+      institution: 'Makhanlal Chaturvedi National University, Bhopal',
+      period: '2022 - 2025',
+      description: 'Graduated with a score of 8.5 SGPA. Focused on computer applications, programming paradigms, and software development methodologies.'
+    },
+    {
+      degree: 'Class XII (Higher Secondary)',
+      institution: 'MP Board of Secondary Education',
+      period: '2020 - 2022',
+      description: 'Completed higher secondary education in Science & Mathematics with 63%.'
+    },
+    {
+      degree: 'Class X (Secondary School)',
+      institution: 'MP Board of Secondary Education',
+      period: '2018 - 2020',
+      description: 'Completed secondary school certification with 66%.'
     }
   ];
 }

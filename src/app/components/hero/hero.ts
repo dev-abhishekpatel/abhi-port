@@ -14,10 +14,10 @@ import { CommonModule } from '@angular/common';
       <!-- Floating Tech Stack Badges around Hero -->
       <div class="floating-tech-container d-none d-lg-block">
         <div class="floating-pill float-slow pill-1 glass-panel">
-          <i class="bi bi-hexagon-fill text-cyan me-2"></i> Angular 21
+          <i class="bi bi-hexagon-fill text-cyan me-2"></i> Angular & React
         </div>
         <div class="floating-pill float-medium pill-2 glass-panel">
-          <i class="bi bi-fire text-warning me-2"></i> Firebase Real-Time
+          <i class="bi bi-database-check text-warning me-2"></i> Firebase & MongoDB
         </div>
         <div class="floating-pill float-reverse pill-3 glass-panel">
           <i class="bi bi-filetype-ts text-primary me-2"></i> TypeScript
@@ -91,7 +91,7 @@ import { CommonModule } from '@angular/common';
             <span class="font-heading small text-muted">developer.config.ts</span>
           </div>
           <code class="font-body small text-cyan">
-            <span class="text-purple">const</span> dev = &#123; name: <span class="text-emerald">'Abhishek Patel'</span>, leadProject: <span class="text-emerald">'E-Commerce & Family Hub 🚀'</span>, stack: <span class="text-emerald">'Angular 21 + Firebase'</span> &#125;;
+            <span class="text-purple">const</span> dev = &#123; name: <span class="text-emerald">'Abhishek Patel'</span>, leadProject: <span class="text-emerald">'E-Commerce & Family Hub 🚀'</span>, stack: <span class="text-emerald">'MERN + Angular + Firebase'</span> &#125;;
           </code>
         </div>
       </div>
@@ -476,9 +476,10 @@ import { CommonModule } from '@angular/common';
 })
 export class HeroComponent implements OnInit, OnDestroy {
   phrases = [
+    'MERN Stack Applications',
+    'Angular & Firebase Apps',
     'E-Commerce & Retail Stores',
     'Family Management Platforms',
-    'Angular 21 & Firebase Apps',
     'Real-Time Chat Applications'
   ];
 

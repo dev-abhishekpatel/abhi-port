@@ -53,7 +53,7 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
                         </div>
                         <div>
                           <h6 class="font-heading text-light mb-0 small">Location</h6>
-                          <span class="text-muted font-body small">India</span>
+                          <span class="text-muted font-body small">Indore, Madhya Pradesh, India</span>
                         </div>
                       </div>
                       
@@ -74,8 +74,8 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
                   <div class="mt-5">
                     <h5 class="h6 font-heading text-light mb-3 text-uppercase small letter-spacing-1">Professional Focus</h5>
                     <div class="d-flex flex-wrap gap-2">
-                      <span class="badge-focus">Angular 22</span>
-                      <span class="badge-focus">Firebase Realtime</span>
+                      <span class="badge-focus">MERN Stack</span>
+                      <span class="badge-focus">Angular & Firebase</span>
                       <span class="badge-focus">TypeScript</span>
                       <span class="badge-focus">Full-Stack</span>
                     </div>

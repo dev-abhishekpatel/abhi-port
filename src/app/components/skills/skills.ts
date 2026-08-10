@@ -172,6 +172,7 @@ export class SkillsComponent {
       title: 'Frontend Development',
       skills: [
         { name: 'Angular Framework', level: 95, icon: 'bi-hexagon' },
+        { name: 'React.js & Redux', level: 90, icon: 'bi-bezier2' },
         { name: 'TypeScript', level: 90, icon: 'bi-filetype-ts' },
         { name: 'JavaScript / ESNext', level: 92, icon: 'bi-filetype-js' },
         { name: 'HTML5 & CSS3', level: 90, icon: 'bi-code-slash' },
@@ -179,13 +180,14 @@ export class SkillsComponent {
       ]
     },
     {
-      title: 'Backend & Firebase',
+      title: 'Backend & Databases',
       skills: [
         { name: 'Firebase Firestore', level: 90, icon: 'bi-database-fill-gear' },
         { name: 'Firebase Auth & Hosting', level: 95, icon: 'bi-shield-lock-fill' },
-        { name: 'Node.js & Express', level: 85, icon: 'bi-box-seam-fill' },
-        { name: 'Laravel (PHP)', level: 75, icon: 'bi-diagram-3-fill' },
-        { name: 'PostgreSQL / SQL', level: 80, icon: 'bi-database' }
+        { name: 'Node.js & Express', level: 88, icon: 'bi-box-seam-fill' },
+        { name: 'MongoDB', level: 90, icon: 'bi-database-check' },
+        { name: 'PostgreSQL / SQL', level: 80, icon: 'bi-database' },
+        { name: 'Laravel (PHP)', level: 75, icon: 'bi-diagram-3-fill' }
       ]
     },
     {
