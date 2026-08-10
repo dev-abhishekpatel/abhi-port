@@ -16,7 +16,7 @@ import { CountUpDirective } from '../../directives/count-up.directive';
             <span class="text-uppercase text-gradient-cyan fw-bold letter-spacing-1 font-heading mb-2 d-inline-block">About Me</span>
             <h2 class="display-5 fw-extrabold text-light mb-4">Crafting Scalable Modern Web Ecosystems</h2>
             <p class="text-muted font-body mb-4">
-              I am a passionate Full-Stack Software Engineer focused on architecting modular web applications and real-time backend integrations. As the lead developer of <strong>Trainee Hit MVP</strong>, I combine powerful modern frontend paradigms like Angular 21 and Analog.js with serverless Cloud Firestore backends to build production-grade platforms.
+              I am a passionate Full-Stack Software Engineer focused on architecting modular web applications and real-time backend integrations. I combine powerful modern frontend paradigms like Angular 21 and RxJS with serverless Cloud Firestore backends to build production-grade platforms including <strong>E-Commerce Storefronts</strong>, <strong>Family Management Hubs</strong>, and real-time communication tools.
             </p>
             <p class="text-muted font-body mb-4">
               Whether designing Tiptap rich-text CMS publishing pipelines, managing stateful NgRx Signal stores, or optimizing database indexing schemas, I write elegant, performant, and maintainable code.

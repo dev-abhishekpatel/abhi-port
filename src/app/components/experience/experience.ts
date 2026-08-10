@@ -202,11 +202,11 @@ export class ExperienceComponent {
   timelineEvents: TimelineEvent[] = [
     {
       year: '2026 - Present',
-      title: 'Trainee Full-Stack Developer',
+      title: 'Full-Stack Software Engineer',
       company: 'Quadralyst',
-      description: 'Engineering enterprise-level content architectures and MVP interfaces. Restructuring forms to Angular FormBuilder configurations, compiling custom templates, and implementing secure database collection rules.',
+      description: 'Engineering enterprise-level web applications, e-commerce storefronts, and modular dashboard interfaces. Restructuring forms to Angular FormBuilder configurations, compiling custom templates, and implementing secure database collection rules.',
       icon: 'bi-briefcase-fill',
-      skills: ['Angular 22', 'TypeScript', 'FormBuilder', 'Firebase Rules', 'arccms', 'Trainee-hitMvp']
+      skills: ['Angular 21', 'TypeScript', 'FormBuilder', 'Firebase Rules', 'E-Commerce', 'Family Hub']
     },
     {
       year: '2025',

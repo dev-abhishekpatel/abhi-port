@@ -272,86 +272,104 @@ export class ProjectsComponent {
 
   projects: Project[] = [
     {
-      title: 'Trainee Hit MVP - Core SaaS Platform',
-      subtitle: 'Full-Stack SaaS Playbook & Rituals Suite',
-      summary: 'A modern trainee development platform with interactive rituals, habit streaks, tactics, and real-time Firestore synchronization.',
-      description: 'Trainee Hit MVP is a comprehensive full-stack application built to structure trainee onboarding, daily habit tracking, tactics discovery, and progress analytics. Built with Analog.js, Angular 21, and NgRx Signal stores.',
-      tags: ['Analog.js', 'Angular 21', 'NgRx Signals', 'Firebase Firestore', 'TypeScript'],
+      category: 'E-Commerce',
+      title: 'E-Commerce Storefront & Order Hub',
+      subtitle: 'Full-Stack Digital Retail Platform',
+      summary: 'Modern online store featuring product catalog browsing, cart management, search filtering, and seamless checkout integrations.',
+      description: 'A full-stack e-commerce web application featuring real-time product inventory tracking, category filtering, cart state management, user wishlist handling, and secure checkout simulation.',
+      tags: ['Angular', 'TypeScript', 'Firebase', 'RxJS', 'Bootstrap 5', 'REST API'],
       features: [
-        'Real-time Firestore synchronization with custom reactive DB services.',
-        'Interactive daily rituals tracker with habit streaks and completion rates.',
-        'Onboarding playbook flow guiding trainees through step-by-step tactics.',
-        'Blazing fast SSR & static shell rendering powered by Analog.js & Vite.'
+        'Dynamic product filtering by price, category, rating, and availability.',
+        'Stateful shopping cart with local persistence and real-time total recalculation.',
+        'User authentication and order history management powered by Firebase.',
+        'Responsive glassmorphic UI layout with smooth micro-interactions.'
       ],
-      icon: 'bi-rocket-takeoff-fill',
+      icon: 'bi-bag-check-fill',
       color: '#6366f1',
-      githubUrl: 'https://github.com/ABHISHEKPATEL8839/Trainee-hitMvp',
-      liveUrl: 'https://github.com/ABHISHEKPATEL8839/Trainee-hitMvp'
+      githubUrl: 'https://github.com/ABHISHEKPATEL8839/ecommerce-store',
+      liveUrl: 'https://github.com/ABHISHEKPATEL8839/ecommerce-store'
     },
     {
-      title: 'Trainee Hit MVP - Admin CMS & Tiptap Editor',
-      subtitle: 'Content Management & Tactic Publisher',
-      summary: 'An administrative dashboard featuring Tiptap rich-text editing, custom playbook generators, and index deployment tools.',
-      description: 'An advanced admin portal for Trainee Hit MVP providing content management, rich-text tactic creation, automated seed scripts, and index deployment pipelines.',
-      tags: ['Angular Material', 'Tiptap Editor', 'Firebase Admin', 'Firestore Indexes', 'ProseMirror'],
+      category: 'Web Apps',
+      title: 'Family Management & Household Hub',
+      subtitle: 'Collaborative Household & Budget Workspace',
+      summary: 'A centralized portal for managing family tasks, chore assignments, shared household budgets, and shared calendars.',
+      description: 'An interactive family organizational application designed to streamline daily household operations. Features shared task boards, expense categorization, budget tracking, and real-time sync across devices.',
+      tags: ['Angular', 'Cloud Firestore', 'NgRx Signals', 'Firebase Auth', 'Chart.js'],
       features: [
-        'WYSIWYG rich text editor with custom extensions (mentions, tables, bubble menu).',
-        'Automated Firestore index exporter (firestore.indexes.json).',
-        'Tactic & Playbook publishing pipeline with instant client updates.',
-        'Role-based authorization guards checking administrative privileges.'
+        'Shared family chore board with status tracking and completion streaks.',
+        'Expense tracker with visual budget breakdown charts and monthly reports.',
+        'Shared calendar and event notification system for family milestones.',
+        'Multi-user role access allowing parent admin controls and kid task views.'
       ],
-      icon: 'bi-sliders',
-      color: '#06b6d4',
-      githubUrl: 'https://github.com/ABHISHEKPATEL8839/Trainee-hitMvp',
-      liveUrl: 'https://github.com/ABHISHEKPATEL8839/Trainee-hitMvp'
-    },
-    {
-      title: 'Trainee Hit MVP - Rituals & Execution Engine',
-      subtitle: 'Habit Tracking & Daily Routines Workspace',
-      summary: 'A dedicated user workspace for setting daily routines, logging entry details, and tracking traction metrics.',
-      description: 'The execution core of Trainee Hit MVP allowing users to configure custom rituals, log reflections, and maintain accountability streaks.',
-      tags: ['Angular CDK', 'NgRx Signals', 'RxJS', 'CSS Grid', 'Reactive Forms'],
-      features: [
-        'Stateful rituals ledger with interactive completion indicators.',
-        'Entry detail modal overlays for comprehensive reflections and notes.',
-        'Offline LocalStorage fallbacks with auto-reconciliation on network reconnect.',
-        'Optimistic UI updates for zero-latency interactions.'
-      ],
-      icon: 'bi-check2-square',
+      icon: 'bi-house-heart-fill',
       color: '#10b981',
-      githubUrl: 'https://github.com/ABHISHEKPATEL8839/Trainee-hitMvp',
-      liveUrl: 'https://github.com/ABHISHEKPATEL8839/Trainee-hitMvp'
+      githubUrl: 'https://github.com/ABHISHEKPATEL8839/family-management',
+      liveUrl: 'https://github.com/ABHISHEKPATEL8839/family-management'
     },
     {
-      title: 'Trainee Hit MVP - Analytics & Export Suite',
-      subtitle: 'Data Visualization & XLSX Exporter',
-      summary: 'An analytics module rendering user playbooks, tactic performance, and exporting reports to Excel (XLSX).',
-      description: 'Analytical suite embedded in Trainee Hit MVP for aggregating user performance data, tracking tactic adoption rates, and generating Excel reports.',
-      tags: ['XLSX Export', 'Data Visualization', 'RxJS', 'TypeScript', 'Firebase'],
+      category: 'Real-Time Chat',
+      title: 'Mini-WhatsApp Real-Time Chat',
+      subtitle: 'Instant Messaging & Media Sharing App',
+      summary: 'A feature-complete messaging app clone supporting real-time chat, media attachment uploads, and live user status streams.',
+      description: 'A direct real-time chat application clone built with Angular standalone components and Cloud Firestore. Implements active presence status, instant message delivery, session caching, and attachment handling.',
+      tags: ['Angular', 'Cloud Firestore', 'Firebase Auth', 'RxJS', 'WebSockets'],
       features: [
-        'Single-click XLSX spreadsheet exporter for performance reporting.',
-        'Interactive metrics for tactic conversion and user traction.',
-        'Custom data pipelines aggregating weekly and monthly completion rates.',
-        'Exportable CSV and Excel data tables.'
+        'Instant real-time 1-on-1 messaging with live Firestore snapshots.',
+        'Media file attachments with image preview and storage pipelines.',
+        'User online/offline status detection and active conversation search.',
+        'Encrypted session state and local data caching.'
       ],
-      icon: 'bi-bar-chart-line-fill',
+      icon: 'bi-chat-dots-fill',
+      color: '#06b6d4',
+      githubUrl: 'https://github.com/ABHISHEKPATEL8839/mini-whatsapp',
+      liveUrl: 'https://github.com/ABHISHEKPATEL8839/mini-whatsapp'
+    },
+    {
+      category: 'Gaming & C++',
+      title: 'Brick Breaker Algorithmic Game',
+      subtitle: '2D OpenGL Arcade Engine',
+      summary: 'Interactive 2D arcade game built with C++ and OpenGL featuring custom physics calculations, collision detection, and score pipelines.',
+      description: 'An algorithmic 2D arcade game built from scratch using C++ and OpenGL graphics libraries. Implements bounding-box collision detection, paddle deflection physics, power-up logic, and high score tracking.',
+      tags: ['C++', 'OpenGL', 'Data Structures', 'OOP', 'Graphics Engine'],
+      features: [
+        'Custom axis-aligned bounding box (AABB) collision detection algorithms.',
+        'Dynamic ball deflection physics based on paddle impact angle.',
+        'Multi-level progression with varying brick durability and power-up drops.',
+        'Optimized rendering pipeline achieving smooth 60 FPS performance.'
+      ],
+      icon: 'bi-controller',
       color: '#d946ef',
-      githubUrl: 'https://github.com/ABHISHEKPATEL8839/Trainee-hitMvp',
-      liveUrl: 'https://github.com/ABHISHEKPATEL8839/Trainee-hitMvp'
+      githubUrl: 'https://github.com/ABHISHEKPATEL8839/brick-breaker-game',
+      liveUrl: 'https://github.com/ABHISHEKPATEL8839/brick-breaker-game'
+    },
+    {
+      category: 'Web Apps',
+      title: 'Glassmorphic Developer Portfolio',
+      subtitle: 'Angular 21 Interactive Showcase',
+      summary: 'A high-performance portfolio application featuring dark/light theme switching, glassmorphism UI, and scroll reveal animations.',
+      description: 'A state-of-the-art developer portfolio built using Angular 21, Bootstrap 5, custom CSS Glassmorphism, and Firebase Hosting. Showcases modern animations, light/dark mode toggling, and interactive project dialogs.',
+      tags: ['Angular 21', 'TypeScript', 'Firebase Hosting', 'CSS3 Glassmorphism', 'RxJS'],
+      features: [
+        'Full light/dark theme system with instant CSS custom property switching.',
+        'Custom Scroll reveal directives and count-up animation components.',
+        'Interactive glass dialog overlays with details and GitHub repository links.',
+        '100% mobile-responsive layout deployed on Firebase Hosting.'
+      ],
+      icon: 'bi-window-stack',
+      color: '#f59e0b',
+      githubUrl: 'https://github.com/ABHISHEKPATEL8839/abhi-port',
+      liveUrl: 'https://new-da04f.web.app/'
     }
   ];
 
-  categories = ['All', 'Core SaaS', 'CMS & Admin', 'Rituals Engine', 'Analytics'];
+  categories = ['All', 'E-Commerce', 'Web Apps', 'Real-Time Chat', 'Gaming & C++'];
   selectedCategory = 'All';
   searchQuery = '';
 
   get filteredProjects(): Project[] {
     return this.projects.filter(p => {
-      const matchesCat = this.selectedCategory === 'All' ||
-        (this.selectedCategory === 'Core SaaS' && p.title.includes('Core SaaS')) ||
-        (this.selectedCategory === 'CMS & Admin' && p.title.includes('CMS')) ||
-        (this.selectedCategory === 'Rituals Engine' && p.title.includes('Rituals')) ||
-        (this.selectedCategory === 'Analytics' && p.title.includes('Analytics'));
+      const matchesCat = this.selectedCategory === 'All' || p.category === this.selectedCategory;
 
       const q = this.searchQuery.toLowerCase().trim();
       const matchesSearch = !q ||
