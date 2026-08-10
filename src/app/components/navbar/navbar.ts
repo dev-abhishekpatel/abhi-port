@@ -45,7 +45,7 @@ import { ThemeService, AppTheme, AppFontSize } from '../../services/theme.servic
             </button>
 
             <!-- Font Size Adjuster Group -->
-            <div class="d-flex align-items-center font-size-control-group rounded-pill p-1 glass-control-bg">
+            <!-- <div class="d-flex align-items-center font-size-control-group rounded-pill p-1 glass-control-bg">
               <button class="btn btn-sm p-0 font-size-sub-btn text-muted"
                       (click)="decreaseFontSize()"
                       title="Decrease Font Size"
@@ -62,7 +62,7 @@ import { ThemeService, AppTheme, AppFontSize } from '../../services/theme.servic
                       [disabled]="currentFontSize === 'xl'">
                 <span class="font-heading fw-bold" style="font-size: 0.85rem;">A+</span>
               </button>
-            </div>
+            </div> -->
 
             <!-- Light / Dark Theme Quick Toggle -->
             <button class="btn btn-glass btn-sm p-0 rounded-circle text-light d-flex align-items-center justify-content-center theme-toggle-btn"
@@ -77,15 +77,6 @@ import { ThemeService, AppTheme, AppFontSize } from '../../services/theme.servic
             </a>
             <a href="https://linkedin.com" target="_blank" class="text-light nav-social-link" aria-label="LinkedIn">
               <i class="bi bi-linkedin fs-5"></i>
-            </a>
-          </div>
-
-          <div class="ms-lg-3 text-center">
-            <a href="#contact" 
-               class="btn btn-glow-primary py-2 px-4 navbar-btn" 
-               [class.active]="activeSection === 'contact'"
-               (click)="closeMenu()">
-              Contact Me <i class="bi bi-send-fill ms-1 fs-6"></i>
             </a>
           </div>
         </div>

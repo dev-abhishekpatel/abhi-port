@@ -53,12 +53,10 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
     
     .service-card {
       transition: all 0.4s ease;
-      border-top: 3px solid transparent;
     }
     
     .service-card:hover {
       transform: translateY(-10px);
-      border-top-color: var(--color-secondary);
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 20px rgba(236, 72, 153, 0.15);
     }
     

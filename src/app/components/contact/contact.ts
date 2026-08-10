@@ -319,7 +319,7 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
     }
 
     .error-msg {
-      color: #f87171;
+      color: var(--color-error);
       font-size: 0.78rem;
       margin-top: 5px;
       font-family: var(--font-body);
@@ -347,14 +347,14 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
     .alert-box.success {
       background: rgba(16, 185, 129, 0.12);
       border: 1px solid rgba(16, 185, 129, 0.35);
-      color: #34d399;
+      color: var(--color-success);
       box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
     }
 
     .alert-box.error {
       background: rgba(239, 68, 68, 0.12);
       border: 1px solid rgba(239, 68, 68, 0.35);
-      color: #f87171;
+      color: var(--color-error);
       box-shadow: 0 0 15px rgba(239, 68, 68, 0.15);
     }
 

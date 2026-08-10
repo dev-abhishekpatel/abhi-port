@@ -12,18 +12,18 @@ import { CommonModule } from '@angular/common';
       <div class="hero-radial-glow"></div>
       
       <!-- Floating Tech Stack Badges around Hero -->
-      <div class="floating-tech-container d-none d-lg-block">
+      <div class="floating-tech-container d-none d-lg-block text-dark">
         <div class="floating-pill float-slow pill-1 glass-panel">
-          <i class="bi bi-hexagon-fill text-cyan me-2"></i> Angular & React
+          <i class="bi bi-hexagon-fill text-cyan me-2"></i> <span class="dark">linkd React</span>
         </div>
         <div class="floating-pill float-medium pill-2 glass-panel">
-          <i class="bi bi-database-check text-warning me-2"></i> Firebase & MongoDB
+          <i class="bi bi-database-check text-warning me-2"></i> <span class="dark">Firebase & MongoDB</span>
         </div>
         <div class="floating-pill float-reverse pill-3 glass-panel">
-          <i class="bi bi-filetype-ts text-primary me-2"></i> TypeScript
+          <i class="bi bi-filetype-ts text-primary me-2"></i> <span class="dark">TypeScript</span>
         </div>
         <div class="floating-pill float-slow pill-4 glass-panel">
-          <i class="bi bi-cpu-fill text-secondary me-2"></i> Full-Stack Architecture
+          <i class="bi bi-cpu-fill text-secondary me-2"></i> <span class="dark">Full-Stack Architecture</span>
         </div>
       </div>
 

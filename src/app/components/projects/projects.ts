@@ -70,16 +70,17 @@ interface Project {
           <div class="col-lg-4 col-md-6" *ngFor="let project of filteredProjects; let idx = index"
                appScrollReveal 
                [revealClass]="'reveal reveal-scale reveal-delay-' + (idx % 3 + 1)">
-            <div class="glass-panel glass-card-hover project-card p-4 h-100 d-flex flex-column justify-content-between relative"
-                 [style.border-top]="'3px solid ' + project.color">
+            <div class="glass-panel glass-card-hover project-card p-4 h-100 d-flex flex-column justify-content-between relative">
               <div>
-                <div class="project-icon-wrapper mb-3">
-                  <div class="project-icon" [style.background-color]="project.color + '18'" [style.color]="project.color">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                  <div class="project-icon flex-shrink-0" [style.background-color]="project.color + '12'" [style.color]="project.color">
                     <i [class]="project.icon"></i>
                   </div>
+                  <div>
+                    <h3 class="h5 font-heading text-light mb-1 project-title">{{ project.title }}</h3>
+                    <h6 class="text-cyan font-heading mb-0 small">{{ project.subtitle }}</h6>
+                  </div>
                 </div>
-                <h3 class="h4 font-heading text-light mb-2 project-title">{{ project.title }}</h3>
-                <h6 class="text-cyan font-heading mb-3 small">{{ project.subtitle }}</h6>
                 <p class="text-muted font-body mb-4 small opacity-90">{{ project.summary }}</p>
               </div>
 
