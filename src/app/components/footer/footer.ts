@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
           <!-- Social Icons -->
           <div class="col-auto text-center">
             <div class="d-flex align-items-center gap-3">
-              <a href="https://github.com/ABHISHEKPATEL8839" 
+              <a href="https://github.com/dev-abhishekpatel" 
                  target="_blank" 
                  class="social-btn" 
                  aria-label="GitHub Profile">

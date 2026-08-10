@@ -154,16 +154,16 @@ export class CommandPaletteComponent implements OnInit {
   searchQuery = '';
   selectedIndex = 0;
   categories: Array<'Navigation' | 'Actions' | 'Theme' | 'Typography'> = [
-    'Navigation', 
-    'Actions', 
-    'Theme', 
+    'Navigation',
+    'Actions',
+    'Theme',
     'Typography'
   ];
 
   commands: CommandItem[] = [];
   filteredCommands: CommandItem[] = [];
 
-  constructor(private themeService: ThemeService) {}
+  constructor(private themeService: ThemeService) { }
 
   ngOnInit() {
     this.buildCommandsList();
@@ -179,10 +179,10 @@ export class CommandPaletteComponent implements OnInit {
       { id: 'nav-education', title: 'Go to Education Journey', category: 'Navigation', icon: 'bi bi-mortarboard-fill', shortcut: '#education', action: () => this.scrollTo('#education') },
       { id: 'nav-services', title: 'Go to My Services', category: 'Navigation', icon: 'bi bi-window-sidebar', shortcut: '#services', action: () => this.scrollTo('#services') },
       { id: 'nav-contact', title: 'Go to Connect / Contact Form', category: 'Navigation', icon: 'bi bi-send-fill', shortcut: '#contact', action: () => this.scrollTo('#contact') },
-      
+
       { id: 'act-email', title: 'Copy Email Address to Clipboard', category: 'Actions', icon: 'bi bi-clipboard-check-fill', action: () => this.copyEmail() },
-      { id: 'act-github', title: 'Open GitHub Profile', category: 'Actions', icon: 'bi bi-github', action: () => window.open('https://github.com/ABHISHEKPATEL8839', '_blank') },
-      
+      { id: 'act-github', title: 'Open GitHub Profile', category: 'Actions', icon: 'bi bi-github', action: () => window.open('https://github.com/dev-abhishekpatel', '_blank') },
+
       { id: 'theme-cyber', title: 'Switch Theme: Cyber Midnight (Default Dark)', category: 'Theme', icon: 'bi bi-moon-stars-fill', action: () => this.themeService.setTheme('cyber') },
       { id: 'theme-light', title: 'Switch Theme: Light Elegant (Light Mode)', category: 'Theme', icon: 'bi bi-sun-fill', action: () => this.themeService.setTheme('light') },
       { id: 'theme-neon', title: 'Switch Theme: Neon Synthwave', category: 'Theme', icon: 'bi bi-palette-fill', action: () => this.themeService.setTheme('neon') },
@@ -235,8 +235,8 @@ export class CommandPaletteComponent implements OnInit {
     if (!query) {
       this.filteredCommands = [...this.commands];
     } else {
-      this.filteredCommands = this.commands.filter(c => 
-        c.title.toLowerCase().includes(query) || 
+      this.filteredCommands = this.commands.filter(c =>
+        c.title.toLowerCase().includes(query) ||
         c.category.toLowerCase().includes(query) ||
         (c.shortcut && c.shortcut.toLowerCase().includes(query))
       );

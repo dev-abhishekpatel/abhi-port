@@ -72,7 +72,7 @@ import { ThemeService, AppTheme, AppFontSize } from '../../services/theme.servic
               <i class="bi" [ngClass]="getThemeIconClass()"></i>
             </button>
 
-            <a href="https://github.com/ABHISHEKPATEL8839" target="_blank" class="text-light nav-social-link" aria-label="GitHub">
+            <a href="https://github.com/dev-abhishekpatel" target="_blank" class="text-light nav-social-link" aria-label="GitHub">
               <i class="bi bi-github fs-5"></i>
             </a>
             <a href="https://linkedin.com" target="_blank" class="text-light nav-social-link" aria-label="LinkedIn">
@@ -333,10 +333,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private subs = new Subscription();
 
   constructor(
-    private ngZone: NgZone, 
+    private ngZone: NgZone,
     private cdr: ChangeDetectorRef,
     private themeService: ThemeService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.subs.add(
@@ -357,7 +357,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.ngZone.runOutsideAngular(() => {
         this.scrollListener = () => {
           const scrolled = window.scrollY > 50;
-          
+
           const sections = ['hero', 'about', 'skills', 'projects', 'experience', 'education', 'services', 'contact'];
           const scrollPosition = window.scrollY + 160;
           let newActiveSection = 'hero';
