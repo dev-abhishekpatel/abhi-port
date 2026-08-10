@@ -203,7 +203,7 @@ export class ExperienceComponent {
     {
       year: '2026 - Present',
       title: 'Full-Stack Software Engineer',
-      company: 'Quadralyst',
+      company: 'Client & Enterprise Web Apps',
       description: 'Engineering enterprise-level web applications, e-commerce storefronts, and modular dashboard interfaces. Restructuring forms to Angular FormBuilder configurations, compiling custom templates, and implementing secure database collection rules.',
       icon: 'bi-briefcase-fill',
       skills: ['Angular 21', 'TypeScript', 'FormBuilder', 'Firebase Rules', 'E-Commerce', 'Family Hub']
