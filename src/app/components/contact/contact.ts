@@ -63,8 +63,8 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
                         </div>
                         <div>
                           <h6 class="font-heading text-light mb-0 small">GitHub</h6>
-                          <a href="https://github.com/ABHISHEKPATEL8839" target="_blank" class="text-muted font-body small text-decoration-none contact-link">
-                            github.com/ABHISHEKPATEL8839
+                          <a href="https://github.com/dev-abhishekpatel" target="_blank" class="text-muted font-body small text-decoration-none contact-link">
+                            github.com/dev-abhishekpatel
                           </a>
                         </div>
                       </div>
@@ -383,7 +383,7 @@ export class ContactComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private firebaseService: FirebaseService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.contactForm = this.fb.group({

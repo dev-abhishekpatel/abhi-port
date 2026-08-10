@@ -286,8 +286,8 @@ export class ProjectsComponent {
       ],
       icon: 'bi-bag-check-fill',
       color: '#6366f1',
-      githubUrl: 'https://github.com/ABHISHEKPATEL8839/ecommerce-store',
-      liveUrl: 'https://github.com/ABHISHEKPATEL8839/ecommerce-store'
+      githubUrl: 'https://github.com/dev-abhishekpatel/ecommerce-store',
+      liveUrl: 'https://github.com/dev-abhishekpatel/ecommerce-store'
     },
     {
       category: 'Web Apps',
@@ -304,8 +304,8 @@ export class ProjectsComponent {
       ],
       icon: 'bi-house-heart-fill',
       color: '#10b981',
-      githubUrl: 'https://github.com/ABHISHEKPATEL8839/family-management',
-      liveUrl: 'https://github.com/ABHISHEKPATEL8839/family-management'
+      githubUrl: 'https://github.com/dev-abhishekpatel/family-management',
+      liveUrl: 'https://github.com/dev-abhishekpatel/family-management'
     },
     {
       category: 'Real-Time Chat',
@@ -322,8 +322,8 @@ export class ProjectsComponent {
       ],
       icon: 'bi-chat-dots-fill',
       color: '#06b6d4',
-      githubUrl: 'https://github.com/ABHISHEKPATEL8839/mini-whatsapp',
-      liveUrl: 'https://github.com/ABHISHEKPATEL8839/mini-whatsapp'
+      githubUrl: 'https://github.com/dev-abhishekpatel/mini-whatsapp',
+      liveUrl: 'https://github.com/dev-abhishekpatel/mini-whatsapp'
     },
     {
       category: 'Gaming & C++',
@@ -340,8 +340,8 @@ export class ProjectsComponent {
       ],
       icon: 'bi-controller',
       color: '#d946ef',
-      githubUrl: 'https://github.com/ABHISHEKPATEL8839/brick-breaker-game',
-      liveUrl: 'https://github.com/ABHISHEKPATEL8839/brick-breaker-game'
+      githubUrl: 'https://github.com/dev-abhishekpatel/brick-breaker-game',
+      liveUrl: 'https://github.com/dev-abhishekpatel/brick-breaker-game'
     },
     {
       category: 'Web Apps',
@@ -358,7 +358,7 @@ export class ProjectsComponent {
       ],
       icon: 'bi-window-stack',
       color: '#f59e0b',
-      githubUrl: 'https://github.com/ABHISHEKPATEL8839/abhi-port',
+      githubUrl: 'https://github.com/dev-abhishekpatel/abhi-port',
       liveUrl: 'https://new-da04f.web.app/'
     }
   ];
