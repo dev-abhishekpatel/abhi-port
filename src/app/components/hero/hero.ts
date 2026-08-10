@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
       <div class="hero-radial-glow"></div>
       
       <!-- Floating Tech Stack Badges around Hero -->
-      <div class="floating-tech-container d-none d-lg-block text-dark">
+      <div class="floating-tech-container d-none d-lg-block">
         <div class="floating-pill float-slow pill-1 glass-panel">
           <i class="bi bi-hexagon-fill text-cyan me-2"></i> <span class="dark">linkd React</span>
         </div>

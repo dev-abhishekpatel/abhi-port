@@ -24,7 +24,7 @@
   --color-cyan-rgb: 6, 182, 212;
   --color-text-muted: #94a3b8;
   /* Slate-400 */
-  --color-text-light: #000000;
+  --color-text-light: #f8fafc;
   /* Slate-50 */
   --color-error: #f87171;
   /* Red-400 for dark mode */
@@ -190,7 +190,7 @@ kbd,
 body {
   font-family: var(--font-body);
   background-color: var(--bg-deep-space);
-  color: var(--color-text-dark);
+  color: var(--color-text-light);
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -206,7 +206,7 @@ h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--color-text-dark);
+  color: var(--color-text-light);
 }
 
 /* Custom Scrollbar */
@@ -348,7 +348,6 @@ h6 {
   box-shadow: var(--shadow-glass);
   border-radius: 16px;
   position: relative;
-  color: #000000;
   overflow: hidden;
 }
 
@@ -373,7 +372,7 @@ h6 {
 [data-theme="light"] .glass-panel::before {
   background: linear-gradient(90deg,
       transparent 0%,
-      rgba(0, 0, 0, 0.06) 50%,
+      rgba(0, 0, 0, 0.6) 50%,
       transparent 100%);
 }
 
@@ -507,7 +506,7 @@ h6 {
 [data-theme="light"] .btn-glass {
   background: rgba(241, 245, 249, 0.9);
   border-color: rgba(203, 213, 225, 0.8);
-  color: #000
+  color: var(--color-text-light);
 }
 
 .btn-glass:hover {
@@ -812,7 +811,7 @@ dialog.glass-dialog.dialog-closing::backdrop {
 [data-theme="light"] .form-control {
   background-color: #ffffff !important;
   color: var(--color-text-light) !important;
-  border-color: rgba(0, 0, 0, 0.8) !important;
+  border-color: rgba(203, 213, 225, 0.8) !important;
 }
 
 [data-theme="light"] .form-control::placeholder {
@@ -858,4 +857,16 @@ dialog.glass-dialog.dialog-closing::backdrop {
 
 .dark {
   color: #a898cf;
+}
+
+[data-theme="neon"] .dark {
+  color: #e9d5ff;
+}
+
+[data-theme="emerald"] .dark {
+  color: #6ee7b7;
+}
+
+[data-theme="light"] .dark {
+  color: #1e293b;
 }
