@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, OnInit, OnDestroy, NgZone, ChangeDetectorRef } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit, OnDestroy, NgZone, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ThemeService, AppTheme, AppFontSize } from '../../services/theme.service';
@@ -7,6 +7,7 @@ import { ThemeService, AppTheme, AppFontSize } from '../../services/theme.servic
   selector: 'app-navbar',
   standalone: true,
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <nav class="navbar navbar-expand-lg fixed-top transition-all"
          [ngClass]="{'scrolled-nav': isScrolled}">
@@ -43,26 +44,6 @@ import { ThemeService, AppTheme, AppFontSize } from '../../services/theme.servic
               <span class="small font-heading d-none d-xl-inline">Search</span>
               <span class="badge palette-kbd-badge small px-1.5 py-0.5">⌘K</span>
             </button>
-
-            <!-- Font Size Adjuster Group -->
-            <!-- <div class="d-flex align-items-center font-size-control-group rounded-pill p-1 glass-control-bg">
-              <button class="btn btn-sm p-0 font-size-sub-btn text-muted"
-                      (click)="decreaseFontSize()"
-                      title="Decrease Font Size"
-                      [disabled]="currentFontSize === 'sm'">
-                <span class="font-heading fw-bold" style="font-size: 0.75rem;">A-</span>
-              </button>
-              <span class="font-size-label font-heading text-cyan px-1 small fw-bold"
-                    title="Current Font Scale">
-                {{ getFontSizeLabel() }}
-              </span>
-              <button class="btn btn-sm p-0 font-size-sub-btn text-muted"
-                      (click)="increaseFontSize()"
-                      title="Increase Font Size"
-                      [disabled]="currentFontSize === 'xl'">
-                <span class="font-heading fw-bold" style="font-size: 0.85rem;">A+</span>
-              </button>
-            </div> -->
 
             <!-- Light / Dark Theme Quick Toggle -->
             <button class="btn btn-glass btn-sm p-0 rounded-circle text-light d-flex align-items-center justify-content-center theme-toggle-btn"
@@ -321,6 +302,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ];
 
   private scrollListener?: () => void;
+  private isTicking = false;
   private subs = new Subscription();
 
   constructor(
@@ -333,45 +315,49 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.subs.add(
       this.themeService.theme$.subscribe(theme => {
         this.currentTheme = theme;
-        this.cdr.detectChanges();
+        this.cdr.markForCheck();
       })
     );
 
     this.subs.add(
       this.themeService.fontSize$.subscribe(size => {
         this.currentFontSize = size;
-        this.cdr.detectChanges();
+        this.cdr.markForCheck();
       })
     );
 
     if (typeof window !== 'undefined') {
       this.ngZone.runOutsideAngular(() => {
+        const sections = ['hero', 'about', 'skills', 'projects', 'experience', 'education', 'services', 'contact'];
+        
         this.scrollListener = () => {
-          const scrolled = window.scrollY > 50;
+          if (this.isTicking) return;
+          this.isTicking = true;
 
-          const sections = ['hero', 'about', 'skills', 'projects', 'experience', 'education', 'services', 'contact'];
-          const scrollPosition = window.scrollY + 160;
-          let newActiveSection = 'hero';
+          requestAnimationFrame(() => {
+            this.isTicking = false;
+            const scrolled = window.scrollY > 50;
+            const scrollPosition = window.scrollY + 160;
+            let newActiveSection = 'hero';
 
-          for (const section of sections) {
-            const el = document.getElementById(section);
-            if (el) {
-              const top = el.offsetTop;
-              const height = el.offsetHeight;
-              if (scrollPosition >= top && scrollPosition < top + height) {
-                newActiveSection = section;
-                break;
+            for (const section of sections) {
+              const el = document.getElementById(section);
+              if (el) {
+                const top = el.offsetTop;
+                const height = el.offsetHeight;
+                if (scrollPosition >= top && scrollPosition < top + height) {
+                  newActiveSection = section;
+                  break;
+                }
               }
             }
-          }
 
-          if (this.isScrolled !== scrolled || this.activeSection !== newActiveSection) {
-            this.ngZone.run(() => {
+            if (this.isScrolled !== scrolled || this.activeSection !== newActiveSection) {
               this.isScrolled = scrolled;
               this.activeSection = newActiveSection;
               this.cdr.detectChanges();
-            });
-          }
+            }
+          });
         };
 
         window.addEventListener('scroll', this.scrollListener, { passive: true });

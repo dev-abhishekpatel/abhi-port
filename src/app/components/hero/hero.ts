@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="hero-section d-flex align-items-center justify-content-center position-relative overflow-hidden">
       <!-- Background Ambient Grid & Radial Glow -->
@@ -489,8 +490,12 @@ export class HeroComponent implements OnInit, OnDestroy {
   private isDeleting = false;
   private timer: any;
 
+  constructor(private ngZone: NgZone, private cdr: ChangeDetectorRef) {}
+
   ngOnInit() {
-    this.tick();
+    this.ngZone.runOutsideAngular(() => {
+      this.tick();
+    });
   }
 
   tick() {
@@ -503,6 +508,8 @@ export class HeroComponent implements OnInit, OnDestroy {
       this.currentText = currentPhrase.substring(0, this.charIndex + 1);
       this.charIndex++;
     }
+
+    this.cdr.detectChanges();
 
     let delta = 100 - Math.random() * 40;
 

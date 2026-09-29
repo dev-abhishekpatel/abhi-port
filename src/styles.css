@@ -150,29 +150,20 @@ html[data-font-size="xl"] {
   font-size: 20px;
 }
 
-/* --- Smooth Universal Theme Transition --- */
+/* --- Smooth Theme Transitions for Key Container Components --- */
 body,
 nav,
 section,
 footer,
-div,
-span,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a,
 button,
 input,
 textarea,
 select,
 dialog,
-kbd,
 .glass-panel,
-.glass-card-hover {
+.glass-card-hover,
+.btn-glass,
+.btn-glow-primary {
   transition: background-color 0.35s ease,
     color 0.35s ease,
     border-color 0.35s ease,
@@ -256,17 +247,15 @@ h6 {
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
+  filter: blur(40px);
   opacity: 0.22;
-  mix-blend-mode: screen;
   will-change: transform;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
 }
 
 [data-theme="light"] .orb {
   opacity: 0.08;
-  mix-blend-mode: normal;
 }
 
 .orb-primary {

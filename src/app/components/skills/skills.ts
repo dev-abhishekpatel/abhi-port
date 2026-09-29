@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
@@ -17,6 +17,7 @@ interface SkillCategory {
   selector: 'app-skills',
   standalone: true,
   imports: [CommonModule, ScrollRevealDirective],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section-padding bg-dark-slate position-relative">
       <div class="container">

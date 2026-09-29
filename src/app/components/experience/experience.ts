@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
@@ -15,6 +15,7 @@ interface TimelineEvent {
   selector: 'app-experience',
   standalone: true,
   imports: [CommonModule, ScrollRevealDirective],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section-padding bg-dark-slate position-relative">
       <div class="container">
@@ -222,7 +223,7 @@ export class ExperienceComponent {
     },
     {
       year: '2024',
-      title: 'Core Programming & Algorithmic Games',
+      title: 'Core Programming',
       company: 'Academic & Personal Projects',
       description: 'Dived into C++ development, object-oriented concepts, and computational graphics. Built an interactive Brick Breaker game using OpenGL rendering pipes.',
       icon: 'bi-cpu-fill',

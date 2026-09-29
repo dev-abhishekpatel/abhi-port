@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
@@ -21,6 +21,7 @@ interface Project {
   selector: 'app-projects',
   standalone: true,
   imports: [CommonModule, FormsModule, ScrollRevealDirective],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section-padding bg-dark-slate position-relative">
       <div class="container">
@@ -42,7 +43,7 @@ interface Project {
                 <button *ngFor="let cat of categories" 
                         class="btn btn-sm px-3 py-2 rounded-pill transition-all font-heading fw-medium"
                         [ngClass]="selectedCategory === cat ? 'btn-glow-primary' : 'btn-glass text-muted'"
-                        (click)="selectedCategory = cat">
+                        (click)="selectCategory(cat)">
                   {{ cat }}
                 </button>
               </div>
@@ -53,7 +54,8 @@ interface Project {
                 <input type="text" 
                        class="form-control bg-transparent border-secondary-subtle text-light font-body ps-5 rounded-pill shadow-none" 
                        placeholder="Search projects by tech..." 
-                       [(ngModel)]="searchQuery">
+                       [(ngModel)]="searchQuery"
+                       (ngModelChange)="updateFilter()">
               </div>
             </div>
           </div>
@@ -268,7 +270,7 @@ interface Project {
     }
   `]
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnInit {
   selectedProject: Project | null = null;
 
   projects: Project[] = [
@@ -367,11 +369,22 @@ export class ProjectsComponent {
   categories = ['All', 'E-Commerce', 'Web Apps', 'Real-Time Chat', 'Gaming & C++'];
   selectedCategory = 'All';
   searchQuery = '';
+  filteredProjects: Project[] = [];
 
-  get filteredProjects(): Project[] {
-    return this.projects.filter(p => {
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnInit() {
+    this.updateFilter();
+  }
+
+  selectCategory(cat: string) {
+    this.selectedCategory = cat;
+    this.updateFilter();
+  }
+
+  updateFilter() {
+    this.filteredProjects = this.projects.filter(p => {
       const matchesCat = this.selectedCategory === 'All' || p.category === this.selectedCategory;
-
       const q = this.searchQuery.toLowerCase().trim();
       const matchesSearch = !q ||
         p.title.toLowerCase().includes(q) ||
@@ -380,6 +393,7 @@ export class ProjectsComponent {
 
       return matchesCat && matchesSearch;
     });
+    this.cdr.markForCheck();
   }
 
   openDialog(project: Project, dialogEl: HTMLDialogElement) {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 import { CountUpDirective } from '../../directives/count-up.directive';
@@ -7,6 +7,7 @@ import { CountUpDirective } from '../../directives/count-up.directive';
   selector: 'app-about',
   standalone: true,
   imports: [CommonModule, ScrollRevealDirective, CountUpDirective],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section-padding bg-dark-slate position-relative overflow-hidden">
       <div class="container">

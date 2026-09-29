@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { FirebaseService, ContactMessage } from '../../services/firebase.service';
@@ -8,6 +8,7 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
   selector: 'app-contact',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, ScrollRevealDirective],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section-padding bg-dark-slate position-relative">
       <div class="container">
@@ -382,7 +383,8 @@ export class ContactComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private firebaseService: FirebaseService
+    private firebaseService: FirebaseService,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -405,12 +407,14 @@ export class ContactComponent implements OnInit {
       Object.keys(this.contactForm.controls).forEach(key => {
         this.contactForm.get(key)?.markAsTouched();
       });
+      this.cdr.markForCheck();
       return;
     }
 
     this.isSubmitting = true;
     this.submitStatus = null;
     this.statusMessage = '';
+    this.cdr.markForCheck();
 
     const message: ContactMessage = this.contactForm.value;
 
@@ -425,6 +429,7 @@ export class ContactComponent implements OnInit {
       console.error('Contact submit error:', err);
     } finally {
       this.isSubmitting = false;
+      this.cdr.markForCheck();
     }
   }
 }

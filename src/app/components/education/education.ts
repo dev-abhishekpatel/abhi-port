@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
 
@@ -6,6 +6,7 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
   selector: 'app-education',
   standalone: true,
   imports: [CommonModule, ScrollRevealDirective],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="section-padding bg-dark-slate position-relative overflow-hidden" id="education">
       <div class="container">

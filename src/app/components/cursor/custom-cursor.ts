@@ -1,16 +1,17 @@
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild, NgZone } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, NgZone, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-custom-cursor',
   standalone: true,
   imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="cursor-container d-none d-lg-block">
       <!-- Main glowing fluid ring -->
-      <div #cursorRing class="custom-cursor-ring" [ngClass]="{'is-hovering': isHovered, 'is-clicking': isClicked}"></div>
+      <div #cursorRing class="custom-cursor-ring"></div>
       <!-- Inner dot -->
-      <div #cursorDot class="custom-cursor-dot" [ngClass]="{'is-hovering': isHovered, 'is-clicking': isClicked}"></div>
+      <div #cursorDot class="custom-cursor-dot"></div>
     </div>
   `,
   styles: [`
@@ -92,8 +93,8 @@ export class CustomCursorComponent implements OnInit, OnDestroy {
   @ViewChild('cursorRing', { static: true }) ringRef!: ElementRef<HTMLDivElement>;
   @ViewChild('cursorDot', { static: true }) dotRef!: ElementRef<HTMLDivElement>;
 
-  isHovered = false;
-  isClicked = false;
+  private isHovered = false;
+  private isClicked = false;
 
   private mouseX = -100;
   private mouseY = -100;
@@ -119,23 +120,20 @@ export class CustomCursorComponent implements OnInit, OnDestroy {
           if (target) {
             const isInteractive = !!target.closest('a, button, input, textarea, .btn, .glass-panel, .social-btn, [role="button"]');
             if (this.isHovered !== isInteractive) {
-              this.ngZone.run(() => {
-                this.isHovered = isInteractive;
-              });
+              this.isHovered = isInteractive;
+              this.updateClasses();
             }
           }
         };
 
         const onMouseDown = () => {
-          this.ngZone.run(() => {
-            this.isClicked = true;
-          });
+          this.isClicked = true;
+          this.updateClasses();
         };
 
         const onMouseUp = () => {
-          this.ngZone.run(() => {
-            this.isClicked = false;
-          });
+          this.isClicked = false;
+          this.updateClasses();
         };
 
         window.addEventListener('mousemove', onMouseMove, { passive: true });
@@ -150,6 +148,15 @@ export class CustomCursorComponent implements OnInit, OnDestroy {
 
         this.render();
       });
+    }
+  }
+
+  private updateClasses() {
+    if (this.ringRef?.nativeElement && this.dotRef?.nativeElement) {
+      this.ringRef.nativeElement.classList.toggle('is-hovering', this.isHovered);
+      this.ringRef.nativeElement.classList.toggle('is-clicking', this.isClicked);
+      this.dotRef.nativeElement.classList.toggle('is-hovering', this.isHovered);
+      this.dotRef.nativeElement.classList.toggle('is-clicking', this.isClicked);
     }
   }
 

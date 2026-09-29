@@ -1,4 +1,4 @@
-import { Component, HostListener, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, HostListener, ViewChild, ElementRef, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ThemeService, AppTheme, AppFontSize } from '../../services/theme.service';
@@ -16,6 +16,7 @@ export interface CommandItem {
   selector: 'app-command-palette',
   standalone: true,
   imports: [CommonModule, FormsModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <dialog #paletteDialog 
             class="glass-dialog command-palette-dialog" 
@@ -48,7 +49,7 @@ export interface CommandItem {
                class="command-row px-3 py-2.5 rounded-3 d-flex align-items-center justify-content-between mb-1"
                [ngClass]="{'selected': isSelected(item)}"
                (click)="executeCommand(item)"
-               (mouseenter)="selectedIndex = getFlatIndex(item)">
+               (mouseenter)="setSelectedIndex(getFlatIndex(item))">
             
             <div class="d-flex align-items-center gap-3">
               <div class="command-icon-box rounded-2 d-flex align-items-center justify-content-center">
@@ -162,8 +163,9 @@ export class CommandPaletteComponent implements OnInit {
 
   commands: CommandItem[] = [];
   filteredCommands: CommandItem[] = [];
+  private categorisedCache: Record<string, CommandItem[]> = {};
 
-  constructor(private themeService: ThemeService) { }
+  constructor(private themeService: ThemeService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.buildCommandsList();
@@ -197,6 +199,7 @@ export class CommandPaletteComponent implements OnInit {
     ];
 
     this.filteredCommands = [...this.commands];
+    this.rebuildCategoriesCache();
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -220,6 +223,7 @@ export class CommandPaletteComponent implements OnInit {
     this.searchQuery = '';
     this.onSearchInput();
     this.dialogRef.nativeElement.showModal();
+    this.cdr.markForCheck();
     setTimeout(() => {
       this.searchInputRef?.nativeElement?.focus();
     }, 50);
@@ -228,6 +232,7 @@ export class CommandPaletteComponent implements OnInit {
   close() {
     this.isOpen = false;
     this.dialogRef.nativeElement.close();
+    this.cdr.markForCheck();
   }
 
   onSearchInput() {
@@ -242,10 +247,26 @@ export class CommandPaletteComponent implements OnInit {
       );
     }
     this.selectedIndex = 0;
+    this.rebuildCategoriesCache();
+    this.cdr.markForCheck();
+  }
+
+  private rebuildCategoriesCache() {
+    this.categorisedCache = {};
+    for (const cat of this.categories) {
+      this.categorisedCache[cat] = this.filteredCommands.filter(c => c.category === cat);
+    }
   }
 
   getCommandsByCategory(cat: 'Navigation' | 'Actions' | 'Theme' | 'Typography'): CommandItem[] {
-    return this.filteredCommands.filter(c => c.category === cat);
+    return this.categorisedCache[cat] || [];
+  }
+
+  setSelectedIndex(index: number) {
+    if (this.selectedIndex !== index) {
+      this.selectedIndex = index;
+      this.cdr.markForCheck();
+    }
   }
 
   isSelected(item: CommandItem): boolean {
