@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
       <!-- Floating Tech Stack Badges around Hero -->
       <div class="floating-tech-container d-none d-lg-block">
         <div class="floating-pill float-slow pill-1 glass-panel">
-          <i class="bi bi-hexagon-fill text-cyan me-2"></i> <span class="dark">linkd React</span>
+          <i class="bi bi-hexagon-fill text-cyan me-2"></i> <span class="dark">React</span>
         </div>
         <div class="floating-pill float-medium pill-2 glass-panel">
           <i class="bi bi-database-check text-warning me-2"></i> <span class="dark">Firebase & MongoDB</span>

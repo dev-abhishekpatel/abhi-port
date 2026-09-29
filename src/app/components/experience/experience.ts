@@ -97,7 +97,8 @@ interface TimelineEvent {
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: var(--bg-slate);
+      background: var(--bg-card);
+      backdrop-filter: blur(8px);
       border: 3px solid var(--color-primary);
       color: var(--color-cyan);
       display: flex;
@@ -118,13 +119,15 @@ interface TimelineEvent {
       border-color: var(--color-secondary);
       color: var(--color-secondary);
       box-shadow: 0 0 25px rgba(217, 70, 239, 0.7);
-      transform: scale(1.15) rotate(360deg);
+      transform: scale(1.15) translateY(-5px);
     }
 
     .timeline-card {
       position: relative;
-      background: rgba(15, 23, 42, 0.55);
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--border-glass);
+      border-radius: 16px;
       transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.35s ease;
     }
 
@@ -153,19 +156,20 @@ interface TimelineEvent {
     }
 
     .timeline-tag {
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(15, 23, 42, 0.2);
       border: 1px solid var(--border-glass);
       color: var(--color-text-muted);
-      border-radius: 4px;
-      padding: 3px 8px;
-      font-size: 0.73rem;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-family: var(--font-heading);
       transition: all 0.25s ease;
     }
 
     .timeline-tag:hover {
       background: rgba(6, 182, 212, 0.12);
       border-color: var(--color-cyan);
-      color: #ffffff;
+      color: var(--color-text-light);
       transform: translateY(-2px);
     }
 
