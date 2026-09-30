@@ -34,15 +34,15 @@ import { CommonModule } from '@angular/common';
       border-radius: 50%;
       border: 1.5px solid var(--color-cyan, #06b6d4);
       background: rgba(6, 182, 212, 0.04);
-      box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.18);
       pointer-events: none;
       will-change: transform;
-      transition: width 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
-                  height 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
-                  margin 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
-                  border-color 0.3s ease,
-                  background 0.3s ease,
-                  box-shadow 0.3s ease;
+      transition: width 0.18s cubic-bezier(0.165, 0.84, 0.44, 1),
+                  height 0.18s cubic-bezier(0.165, 0.84, 0.44, 1),
+                  margin 0.18s cubic-bezier(0.165, 0.84, 0.44, 1),
+                  border-color 0.18s ease,
+                  background 0.18s ease,
+                  box-shadow 0.18s ease;
     }
 
     .custom-cursor-ring.is-hovering {
@@ -52,13 +52,13 @@ import { CommonModule } from '@angular/common';
       margin-left: -30px;
       border-color: var(--color-secondary, #d946ef);
       background: rgba(217, 70, 239, 0.08);
-      box-shadow: 0 0 25px rgba(217, 70, 239, 0.4);
+      box-shadow: 0 0 16px rgba(217, 70, 239, 0.28);
     }
 
     .custom-cursor-ring.is-clicking {
       transform: scale(0.75) !important;
       border-color: var(--color-primary, #6366f1);
-      box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+      box-shadow: 0 0 18px rgba(99, 102, 241, 0.45);
     }
 
     .custom-cursor-dot {
@@ -71,15 +71,16 @@ import { CommonModule } from '@angular/common';
       margin-left: -4px;
       border-radius: 50%;
       background: var(--color-cyan, #06b6d4);
-      box-shadow: 0 0 10px var(--color-cyan, #06b6d4);
+      box-shadow: 0 0 6px var(--color-cyan, #06b6d4);
       pointer-events: none;
       will-change: transform;
-      transition: background 0.3s ease, transform 0.15s ease;
+      /* remove transform transition so dot follows instantly */
+      transition: background 0.18s ease;
     }
 
     .custom-cursor-dot.is-hovering {
       background: var(--color-secondary, #d946ef);
-      box-shadow: 0 0 15px var(--color-secondary, #d946ef);
+      box-shadow: 0 0 10px var(--color-secondary, #d946ef);
     }
 
     @media (pointer: coarse) {
@@ -108,22 +109,10 @@ export class CustomCursorComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (typeof window !== 'undefined') {
       this.ngZone.runOutsideAngular(() => {
+        // Lightweight mousemove: only update coordinates here.
         const onMouseMove = (e: MouseEvent) => {
           this.mouseX = e.clientX;
           this.mouseY = e.clientY;
-
-          if (this.dotRef?.nativeElement) {
-            this.dotRef.nativeElement.style.transform = `translate3d(${this.mouseX}px, ${this.mouseY}px, 0)`;
-          }
-
-          const target = e.target as HTMLElement | null;
-          if (target) {
-            const isInteractive = !!target.closest('a, button, input, textarea, .btn, .glass-panel, .social-btn, [role="button"]');
-            if (this.isHovered !== isInteractive) {
-              this.isHovered = isInteractive;
-              this.updateClasses();
-            }
-          }
         };
 
         const onMouseDown = () => {
@@ -146,31 +135,57 @@ export class CustomCursorComponent implements OnInit, OnDestroy {
           window.removeEventListener('mouseup', onMouseUp);
         };
 
-        this.render();
+        // Cache element refs for faster writes
+        const ringEl = this.ringRef.nativeElement;
+        const dotEl = this.dotRef.nativeElement;
+
+        this.render(ringEl, dotEl);
       });
     }
   }
 
   private updateClasses() {
-    if (this.ringRef?.nativeElement && this.dotRef?.nativeElement) {
-      this.ringRef.nativeElement.classList.toggle('is-hovering', this.isHovered);
-      this.ringRef.nativeElement.classList.toggle('is-clicking', this.isClicked);
-      this.dotRef.nativeElement.classList.toggle('is-hovering', this.isHovered);
-      this.dotRef.nativeElement.classList.toggle('is-clicking', this.isClicked);
-    }
+    this.ringRef.nativeElement.classList.toggle('is-hovering', this.isHovered);
+    this.ringRef.nativeElement.classList.toggle('is-clicking', this.isClicked);
+    this.dotRef.nativeElement.classList.toggle('is-hovering', this.isHovered);
+    this.dotRef.nativeElement.classList.toggle('is-clicking', this.isClicked);
   }
 
-  private render() {
+  // Now accept cached elements to avoid repeated nativeElement lookups
+  private render(ringEl?: HTMLDivElement, dotEl?: HTMLDivElement) {
+    const ease = 0.28; // faster follow for snappier feel
+
+    // Ensure elements are available
+    const ring = ringEl ?? this.ringRef.nativeElement;
+    const dot = dotEl ?? this.dotRef.nativeElement;
+
     // Lerp smooth follow for ring
-    const ease = 0.18;
     this.ringX += (this.mouseX - this.ringX) * ease;
     this.ringY += (this.mouseY - this.ringY) * ease;
 
-    if (this.ringRef?.nativeElement) {
-      this.ringRef.nativeElement.style.transform = `translate3d(${this.ringX}px, ${this.ringY}px, 0)`;
+    // Update transforms for dot (immediate) and ring (smoothed)
+    if (dot) {
+      dot.style.transform = `translate3d(${this.mouseX}px, ${this.mouseY}px, 0)`;
+    }
+    if (ring) {
+      ring.style.transform = `translate3d(${this.ringX}px, ${this.ringY}px, 0)`;
     }
 
-    this.animFrameId = requestAnimationFrame(() => this.render());
+    // Hover detection moved to render to keep work off the mousemove handler
+    let isInteractive = false;
+    if (this.mouseX >= 0 && this.mouseY >= 0 && document.elementFromPoint) {
+      const el = document.elementFromPoint(this.mouseX, this.mouseY) as HTMLElement | null;
+      if (el) {
+        isInteractive = !!el.closest('a, button, input, textarea, .btn, .glass-panel, .social-btn, [role="button"]');
+      }
+    }
+
+    if (this.isHovered !== isInteractive) {
+      this.isHovered = isInteractive;
+      this.updateClasses();
+    }
+
+    this.animFrameId = requestAnimationFrame(() => this.render(ring, dot));
   }
 
   ngOnDestroy() {
