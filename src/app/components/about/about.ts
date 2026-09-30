@@ -30,6 +30,19 @@ import { CountUpDirective } from '../../directives/count-up.directive';
               <span class="focus-pill"><i class="bi bi-palette text-secondary me-1"></i> Premium Motion UI</span>
             </div>
 
+            <!-- Technologies List -->
+            <div class="tech-list mb-4">
+              <h6 class="small text-muted mb-2">Technologies</h6>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="tech-pill">Frontend: Angular, React.js, HTML5, CSS3, JavaScript, Bootstrap, Tailwind CSS</span>
+                <span class="tech-pill">Backend: Node.js, Express.js, REST APIs</span>
+                <span class="tech-pill">Database: MongoDB, MySQL, Firebase</span>
+                <span class="tech-pill">Full Stack: MERN, MEAN</span>
+                <span class="tech-pill">Platforms: Linux, Ubuntu</span>
+                <span class="tech-pill">Mobile / Hybrid: Ionic</span>
+              </div>
+            </div>
+
             <div class="d-flex align-items-center gap-3 mt-4">
               <a href="#contact" class="btn btn-glow-primary py-3 px-4">
                 Get In Touch <i class="bi bi-arrow-right ms-1"></i>
@@ -111,6 +124,24 @@ import { CountUpDirective } from '../../directives/count-up.directive';
       font-size: 0.8rem;
       font-weight: 500;
       transition: all 0.3s ease;
+    }
+
+    .tech-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--color-text-muted);
+      border-radius: 12px;
+      padding: 6px 12px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      transition: all 0.18s ease;
+    }
+
+    .tech-pill:hover {
+      background: rgba(99, 102, 241, 0.08);
+      border-color: var(--color-primary);
+      color: #fff;
+      transform: translateY(-3px);
     }
 
     .focus-pill:hover {

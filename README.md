@@ -76,6 +76,12 @@ Includes:
 - CSS3
 - JavaScript
 
+Additional Frontend, UI & Frameworks:
+
+- React.js
+- Bootstrap
+- Tailwind CSS
+
 ## UI / Styling
 
 - Responsive CSS
@@ -89,12 +95,42 @@ Includes:
 - Firebase Authentication
 - Firebase Database
 
+Backend & APIs:
+
+- Node.js
+- Express.js
+- REST APIs
+
 ## Tools
 
 - Git
 - GitHub
 - VS Code
 - npm
+
+Databases & Cloud:
+
+- MongoDB
+- MySQL
+- Firebase
+
+Full-Stack Patterns:
+
+- MERN Stack (MongoDB, Express, React, Node)
+- MEAN Stack (MongoDB, Express, Angular, Node)
+
+Platforms & OS:
+
+- Linux
+- Ubuntu
+
+Mobile / Hybrid:
+
+- Ionic
+
+Other Services:
+
+- Firebase (repeated where relevant)
 
 ---
 
@@ -226,8 +262,7 @@ Frontend Developer | Angular Developer
 https://new-da04f.web.app/
 
 🔗 GitHub:
-https://github.com/dev-abhishekpate
-
+https://github.com/dev-abhishekpatel
 ---
 
 # ⭐ Support
